@@ -1,0 +1,366 @@
+%File: anonymous-submission-latex-2025.tex
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai25}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2025.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+\usepackage{hyperref} % This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+\usepackage{amsmath}
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai25.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{CSE 6250 Final Project}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Devin Warner\\
+    Justin Suen
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\href{https://github.com/devinwarner10/CSE6250-Project}{CSE 6250 Project Repo}\\
+\href{https://youtu.be/j-bg-xcM3dw}{Project Video}\\
+\href{https://github.com/Melinda315/4SDrug/tree/main}{4SDrug Repo}\\
+\href{https://github.com/ycq091044/SafeDrug/tree/main}{SafeDrug Repo}
+\end{abstract}
+
+% Uncomment the following to link to your code, datasets, an extended version or similar.
+%
+% \begin{links}
+%     \link{Code}{https://aaai.org/example/code}
+%     \link{Datasets}{https://aaai.org/example/datasets}
+%     \link{Extended version}{https://aaai.org/example/extended-version}
+% \end{links}
+
+\section{Introduction}
+
+The original paper 4SDrug explores the realm of drug recommendations and offers an approach that exceeded other models at the time.  Through research of related work, the paper takes note of missed opportunities and concerns for patient health, finance, and privacy.  Notable points raised:
+\begin{itemize}
+    \item Patient health and finances are often put at risk due to lack of considerations for the number of drugs and drug-to-drug interactions
+    \item Usage of deep learning and unordered sets had not been explored fully yet due to graph learning popularity
+\end{itemize}
+
+The paper then starts to dive into its framework on how it tackles the important aspects missing from the related works.  It dives deep into each aspect of the model on how it accounts for set-to-set comparison, weights on symptoms to signify higher or lower importance, and constraints/penalties to enforce the model to recommend a lower number of drugs and drug-to-drug interactions. Our project aims to reproduce the results.
+
+\section{Scope of Reproducibility}
+
+The research questions we plan to reproduce (RQs):
+\begin{enumerate}
+\item How does 4SDrug perform in comparison to state-of-the-art recommendation
+methods?
+\item How do the hyperparameters affect the recommendation performance and how to choose optimal values? \cite{4sdrug}
+\end{enumerate}
+Due to data availability, we will only look to replicate results using MIMIC-III data and the code provided to us. 
+
+
+\section{Methodology}
+\subsection{Dataset Description} \label{dd}
+The data for this paper comes from the \href{https://physionet.org/content/mimiciii/1.4/}{MIMIC-III} dataset \cite{mimiciii}. These data are a collection of deidentified electronic health records (EHRs) of over forty-thousand patients from the Beth Israel Deaconess Medical Center in Boston, MA between 2001 and 2012.
+
+The 4SDrug paper utilizes work done by the SafeDrug paper \cite{yang2021safedrug} for its data collection and processing. This is in part because SafeDrug is used as a benchmark to compare results, and the analysis is more meaningful by starting with the same data. Since our goal was to reproduce the 4SDrug paper and not SafeDrug, we looked at data processing at a high level only. 
+
+The SafeDrug paper uses the \textbf{PRESCRIPTIONS}, \textbf{DIAGNOSES\_ICD}, and \textbf{PROCEDURES\_ICD} tables from the MIMIC-III dataset to create tensors of patient visits. Each tensor represents a patient and contains tensors of visits. Each visit contains three tensors with the set of diagnoses, procedures, and prescriptions associated with that visit. After the preprocessing done by SafeDrug, this dataset includes 6,350 patient records and is stored as "records\_final.pkl" in the "Output" folder of the SafeDrug repo. We used this file as our starting point.
+
+Before use in 4SDrug, these patient records are "flattened" to remove the patient dimension so that all visits are independent of each other. This flattened tensor contains 15,032 visit records. Finally, these records are split into training, testing, and evaluation sets using a 4:1:1 split. The paper describes the size of the split, but both the paper and code repo are unclear on how the split was made. For our purposes, we split the data consecutively using the first 10,020 visits as training data.  
+
+In addition to providing patient record data, SafeDrug also provides a data set of harmful drug-to-drug interactions (DDIs). These data are important for helping the 4SDrug algorithm not prescribe drugs that include harmful interactions.
+
+\begin{table}[t]
+\centering
+%\resizebox{.95\columnwidth}{!}{
+\begin{tabular}{c|c c}
+Items & 4SDrug & Reproduce \\ 
+\hline
+\# of visits & 27,869 &  15,032 \\
+\# of symptoms & 1,113 & 1,958 \\
+\# of drugs & 131 & 112  \\
+avg \# of symptoms per symptom set & 31.81 & 13.63  \\
+avg \# of drugs per drug set & 14.36 & 19.57  \\
+total \# of DDI pairs & 448 & 674  
+\end{tabular}
+\caption{Data Statistics - Recreating 4SDrug Table 2}
+\label{table1}
+\end{table}
+
+Table \ref{table1} compares data summary statistics found in 4SDrug Table 2 to the data we were able to recreate from SafeDrug. As can be seen, the visit data we have is quite different from what is reported is 4SDrug. Interestingly, although we have about half as many visits, the number of unique symptoms is larger by about 800. Despite these differences, we were able to get similar model results as described later.
+
+\subsection{Model Description}
+
+The first step in modeling 4SDrug recommendation is to create an embedding for each set of symptoms and prescribed drugs. This embedding is similar to word embeddings in natural language processing (NLP) and it helps standardize set lengths (Equation 1 in 4SDrug). Symptoms are weighted by importance in the embedding based on a learned parameter (Equation 6 in 4SDrug). The embedding has a default size of 64, but this parameter can be changed by the user.
+
+Ultimately, the goal of the model is to recommend a set of drugs based on a set of symptoms. To begin this process, individual drugs are compared to each set of symptoms. Equation \ref{eq:one} (Equation 3 in 4SDrug) shows this calculation as the element-wise dot product of a set of symptoms ($h_S^{(i)}$) to a single drug ($d_j$) through a sigmoid ($\sigma$) function. This function returns the probability that drug $j$ should be included in the recommendation for symptom set $i$. While not set up like a traditional neural network (NN) model, this calculation can be compared to a hidden layer in a NN.
+
+\begin{equation}
+    g\{h_S^{(i)},d_j\} = \sigma(h_S^{(i)} \odot d_j)
+    \label{eq:one}
+\end{equation}
+
+The model uses a multi-label binary classification loss function (Equation 5 in 4SDrug) so recommended drugs have probabilities approaching 1. Other loss functions are described in detail in the Training section.
+
+The learned parameters of the models are vectors that convert symptoms and drug sets into their embeddings, and the importance weights on the symptoms. Using 4SDrug's and our reproduced values for number of symptoms and drugs and an embedding size of 64 we get the following calculations of the total number of parameters:
+
+$$(1,113*64) + (131*64) + (1,113) = 80,729$$
+$$(1,958*64) + (112*64) + (1,958) = 134,4338$$
+
+The code for training the 4SDrug model can be found at the GitHub repository linked in this paper's abstract section.
+
+\section{Training}
+\subsection{Computational Implementation}
+To run the 4SDrug model, we set up the code base on Google Colab and used a T4 GPU. Using this runtime environment and the default arguments (batch\_size = 50 and epochs = 200) the code takes 32.5 minutes to run, about 10 seconds per epoch. 
+
+\subsection{Loss Functions}
+
+As mentioned in the Model Description section, the 4SDrug model uses a multi-label binary classification loss function to optimize model parameters. Equation \ref{eq:two} shows this loss function, where $h_S^{(i)}$ and $\mathcal{D}^{(i)}$ represent the embedding symptom set and drug set for record $i$ respectively, and function $g$ as defined in Equation \ref{eq:one} (Equation 5 in 4SDrug). 
+
+\begin{multline}
+\mathcal{L}_{rec}^{i} = \sum_{d_j\in\mathcal{D}^{(i)}}{\log g\{h_S^{(i)},d_j\}} \quad \\+  \sum_{d_j\in(\mathcal{D}-\mathcal{D}^{(i)})}{\log \left(1-g\{h_S^{(i)},d_j\}\right)}
+    \label{eq:two}
+\end{multline}
+
+In addition to the binary classification loss function mentioned in the previous section, the model implements two other loss functions to assist the recommendations to be small and safe.
+
+Before calculating the "small" loss function, a new set is defined (see Section 3.4.1 in 4SDrug). The authors of 4SDrug proposed that importance of drugs can be learned by intersecting symptom sets with similar symptoms ($h_{S_{\cap}}^{(i,\mathcal{N}_i)}$) and intersecting their prescribed drug sets ($\mathcal{D}_{\cap}^{(i,\mathcal{N}_i)}$). The "small" loss function is identical to the binary classification loss function except it uses these intersected sets, as shown in Equation \ref{eq:three} (Equation 10 in 4SDrug). 
+
+\begin{multline}
+\mathcal{L}_{inter}^{i} = \sum_{d_j\in\mathcal{D}_{\cap}^{(i,\mathcal{N}_i)}}{\log g(h_{S_{\cap}}^{(i,\mathcal{N}_i)},d_j)} \quad \\ + \sum_{d_j\in(\mathcal{D}-\mathcal{D}_{\cap}^{(i,\mathcal{N}_i)})}{\log \left(1-g(h_{S_{\cap}}^{(i,\mathcal{N}_i)},d_j)\right)}
+    \label{eq:three}
+\end{multline}
+
+The loss function for considering "safe" drug sets is made up of two loss functions, one with a knowledge-based penalty and one with a learned penalty. For MIMIC-III data, a drug knowledge base (DKB) is utilized, specifically TWOSIDES (\cite{twosides}), which provides a score $A^d_{kl}$. If drugs $d_k$ and $d_l$ have a DDI, then the score is 1. This is utilized in the following loss function (Equation 11 in 4SDrug):
+
+\begin{multline}
+\mathcal{L}_{K-DDI}^{i} = \sum_{d_k\in\mathcal{D}}\sum_{d_l\in\mathcal{D}}A^d_{kl} \cdot {g\{h_S^{(i)},d_k\}} \cdot {g\{h_S^{(i)},d_l\}}
+    \label{eq:kbddi}
+\end{multline}
+
+Lastly, a data-driven DDI penalty is calculated (see Section 3.4.2 in 4SDrug). This loss function penalizes drugs that appear infrequently together in drug sets and promotes those that appear together often. Drug sets similar to those found in Equation \ref{eq:three} are calculated and used in the following loss function to create this penalty (Equation 13 in 4SDrug):
+
+\begin{multline}
+\mathcal{L}_{D-DDI}^{i} = \sum_{d_k\in\mathcal{D}_-^{i}}\sum_{d_l\in\mathcal{D}_-^{(\mathcal{N}_i)}}{g\{h_S^{(i,\mathcal{N}_i)},d_k\}} \cdot {g\{h_S^{(i,\mathcal{N}_i)},d_l\}}
+    \label{eq:kbddi}
+\end{multline}
+
+The final loss function is a linear combination of the loss functions described above with tunable parameters $\alpha$ and $\beta$ to control the effects of "small" and "safe" on the model.
+
+\begin{equation}
+\mathcal{L} = \mathcal{L}_{rec} + \alpha\mathcal{L}_{inter} + \beta(\mathcal{L}_{K-DDI}+\mathcal{L}_{D-DDI})
+    \label{eq:total_loss}
+\end{equation}
+
+\subsection{Training Method}
+
+The 4SDrug model follows a single hidden-layer neural network framework. Parameter values are set at random initially and similarity scores are calculated on a forward pass. Then, parameter values are updated using gradient descent on a backward pass. Each forward/backward pass makes up an epoch.
+
+\subsection{LLM Assistance}
+
+In preparing the Methodology and Training sections, ChatGPT was given the 4SDrug paper and asked, "Can you explain Section 3 in detail to me? Specifically, how the model converts sets of symptoms and drugs to learned model parameters on drug recommendations." The full response can be found on the ChatGPT link. I found the response detailed yet easy to understand. It summarized information section by section which made the process easier to follow. In comparing the LLM output and the 4SDrug paper I could not find any informational differences.
+
+After providing a summary, ChatGPT asked if I wanted a diagram representing the process. I agreed, and unfortunately, the diagram it created was cropped on the left so it only showed the last few steps. The chat can be found at \href{https://chatgpt.com/share/67b12ffc-0688-8012-b16c-9e4fa21e0e3b}{this link}.
+
+\section{Evaluation}
+\section{Results}
+
+\subsection{Reproducing Experimental Results}
+
+Using our data as defined in Section Dataset Description, we ran 4SDrug using the default model parameters as described in the paper and the GitHub repository. Table \ref{table2} shows the results of 4SDrug from the paper compared to our results.
+
+The Jaccard score is a measure of how similar two sets are where a score of 1 represents being identical. Here, Jaccard is used to measure predicted drug sets compared to ground truth. As can be seen, our data produced worse results than the 4SDrug paper. Based on other metrics, it appears that our training of the model is recommending too few drugs as compared to actual recommendations.
+
+When compared with other state-of-the-art methods, our training of 4SDrug does not perform as well as other methods, namely SafeDrug and GAMENet \cite{shang2019gamenet}. Without starting with the correct data, it is difficult to ascertain if our differences are due to data differences or our implementation of 4SDrug.
+
+\begin{table*}[t]
+\centering
+%\resizebox{.95\columnwidth}{!}{
+\begin{tabular}{l|c c c c c c }
+Method & Jaccard & F1 & Avg \# of Drug & DDI Rate & $|\Delta|$Avg \# Drug & $\Delta$\% DDI Rate \\ 
+\hline
+4SDrug (paper) & 0.5041 & 0.6581 & 17.5040 & 0.0600 & 3.1440 & -26.83\%\\
+4SDrug (reproduce)& 0.4396 & 0.6024 & 13.2414 & 0.0525 &  0.856 &  -38.24\% \\
+\end{tabular}
+\caption{Experimental Results - Recreating 4SDrug Table 3}
+\label{table2}
+\end{table*}
+
+\subsection{Hyperparameter Experiment}
+$\alpha$ is a weight that affects the intersection loss function that is meant to guide the model to a smaller number of suggested drugs. The intersection loss function works by looking at a specific symptom set, the model will then rank all other symptom sets by the largest Jaccard coefficient.  Then for these two matched symptom sets, we compare the respective drug sets and find the intersection.  The model will then aim to maximize for intersecting drugs and minimize for the set of drugs outside the intersection.  As a result the model is taught to keep the drugs that have worked for two symptom sets matched by the highest Jaccard coefficient.  
+
+$\beta$ is a weight that affects the safe drug set principle which is made up of two components.  The first applies a drug knowledge base (DKB) in the form of a matrix, if the two drugs compared are in the matrix then the output of the matrix will be one and a penalty will be applied.  Since the model wants to minimize the output, it will learn to avoid suggesting these pairs of drugs.  The second component is utilized when the DKB is not applicable, this component uses the intersection logic previously discussed and takes the complement each compared drug set to verify how often two drugs are not shared in the same drug set given the intersecting symptom sets.  Finally these two components are summed and weighted by $\beta$. 
+
+Other parameters were not experimented with since the amount of computing resources available were limited.  By conducting a grid experiment with different values for the two weights $\alpha$ in \{0.1, 0.5, 1.0\} and $\beta$ in \{0.5, 1.0, 1.5\} totaled to 9 experiments.  Our results proved to align with the paper's results.  A higher $\alpha$ led to a smaller average number of medications recommended across all three $\beta$ experiments.  By increasing the $\beta$ and holding $\alpha$ constant, the DDI and number of medications would increase, while the Jaccard coefficient with the ground truth would drop.   
+
+As seen in Table~3, the best results exist when $\alpha \in \{0.5, 1.0\}$ and $\beta \in \{0.5, 1.5\}$. Due to resource constraints, fine-tuning any further was not possible.  It is worth noting that the impact of $\beta$ was higher than $\alpha$ since it impacted both the knowledge graph and non-intersecting drug sets for DDI decision making.  
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c||c|c|c|}
+\hline
+\textbf{$\alpha$} & \textbf{$\beta$} & \textbf{best\_ja} & \textbf{avg\_med} & \textbf{DDI\_rate} \\
+\hline
+0.1 & 1.5 & 0.4595 & 14.9808 & 0.0477 \\
+0.1 & 1.0 & 0.4636 & 15.2901 & 0.0548 \\
+0.1 & 0.5 & 0.4705 & 15.8228 & 0.0641 \\
+0.5 & 1.5 & 0.4537 & 14.3707 & 0.0479 \\
+0.5 & 1.0 & 0.4601 & 15.1269 & 0.0555 \\
+0.5 & 0.5 & 0.4646 & 15.3081 & 0.0632 \\
+1.0 & 1.5 & 0.4514 & 14.2442 & 0.0497 \\
+1.0 & 1.0 & 0.4556 & 14.9358 & 0.0561 \\
+1.0 & 0.5 & 0.4592 & 15.3057 & 0.0631 \\
+\hline
+\end{tabular}
+\caption{Impact of $\alpha$ and $\beta$ on best Jaccard score, average medications, and DDI rate.}
+\label{tab:alpha_beta_effects}
+\end{table}
+
+
+
+% \begin{table*}[t]
+% \centering
+% %\resizebox{.95\columnwidth}{!}{
+% \begin{tabular}{l|c c c c c c }
+% Method & Jaccard & F1 & Avg \# of Drug & DDI Rate & $|\Delta|$Avg \# Drug & $\Delta$\% DDI Rate \\ 
+% \hline
+% 4SDrug (paper) & 0.5041 & 0.6581 & 17.5040 & 0.0600 & 3.1440 & -26.83\%\\
+% 4SDrug (reproduce)& 0.4396 & 0.6024 & 13.2414 & 0.0525 &  0.856 &  -38.24\% \\
+% \end{tabular}
+% \caption{Experimental Results - Recreating 4SDrug Table 3}
+% \label{table2}
+% \end{table*}
+
+
+
+
+\section{Discussion}
+
+\subsection{Data Reproducibility}
+After working on reproducing the results of the 4SDrug paper, we have decided that given the paper and the code repository, this work is not reproducible. 
+
+The first challenge we ran into was the data. The paper describes using MIMIC-III data and extracting symptoms from clinical notes (see Section 5.1.1 in 4SDrug). The 4SDrug GitHub repository only offers the following data guide, "Please download the MIMIC-III dataset" \cite{4sdrug_github}.
+
+A closer look at the code (specifically "utils/dataset.py") shows that the code expects the files "ddi\_A\_final.pkl", "voc\_final.pkl", and "data\_X.pkl" where X is "train", "eval" and "test". Further digging led to understanding that the "ddi" and "voc" files come directly from the SafeDrug repo \cite{safedrug_github}, and that the "data" files are calculated from the "records\_final.pkl" file from SafeDrug. 
+
+In total, 4SDrug could have done a better job in allowing their data to be reproducible. Firstly, they could have included the files mentioned above in their repository. In its current state, the repository is not self-sufficient and users must find the SafeDrug data on their own.
+
+However, as shown in this article, acquiring the SafeDrug data still does not reproduce the results of the 4SDrug article. This may be due to the fact that SafeDrug pushed updates to their repository after 4SDrug was published. Tests with different versions of the SafeDrug "records\_final.pkl" data did not yield any better results than those described in this paper.
+
+\subsection{Tuning and Experimenting Reproducibility}
+While reproducing the experimentation for hyperparameters, we were limited by the computing resources available.  Through Google Colab we could complete training for one model with 100 epochs and .001 learning rate in about 15 minutes.  After running 4 experiments, the T4 GPU runtime type would timeout since the limit for free usage had been reached.  Using the CPU to run it would work at about 1\% of the speed of the GPU and was not a viable option.  Therefore we were limited to the amount of parameters and level of fine tuning due to computing resources.    
+
+
+\subsection{Overall Comments}
+
+This paper makes a key assumption that the drugs recommended as recorded in the data are effective at treating the set of symptoms. In real life, drugs can be prescribed that have no effect or an adverse effect on treating the patient's symptoms. We could not find discussion of this assumption in the paper and thus the model may be adversely impacted by ineffective drug recommendations.
+
+\section{Author's Contributions}
+The following sections were written by Devin Warner:
+\begin{itemize}
+    \item Methodology
+    \item Training
+    \item Discussion:Data Reproducibility
+    \item Results:Reproducing Experimental Results
+\end{itemize}
+
+Devin worked on data preprocessing and attempting to reproduce results from Table 2, Table 3, and RQ1 from the 4SDrug paper. 
+
+\bigskip
+
+The following sections were written by Justin Suen:
+\begin{itemize}
+    \item Introduction
+    \item Scope of Reproducibility
+    \item Results: Hyperparameter Experiment
+    \item Discussion: Tuning and Experimenting Reproducibility
+    \item Reproducing the results from RQ3
+\end{itemize}
+
+
+\newpage
+\bibliography{final}
+
+\end{document}
